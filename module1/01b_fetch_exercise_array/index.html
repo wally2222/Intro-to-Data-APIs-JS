@@ -11,28 +11,36 @@
 
     <script>
       console.log('about to fetch some rainbows');
+// step 1 define array with 'images/image1' 'images/image1'
       const filenames = [
         'images/daniele-levis-pelusi-311027-unsplash.jpg',
         'images/guy-stevens-746794-unsplash.jpg',
         'images/sharon-pittaway-98257-unsplash.jpg'
       ];
-
+// step 8 call CatchRainbows 
       catchRainbows(filenames)
+// step 9 add .then()
         .then(response => {
           console.log('yay');
         })
+// step 10 add .catch(error)
         .catch(error => {
           console.log('error!');
           console.error(error);
         });
-
+// step 2 define function async
       async function catchRainbows(filenames) {
+// step 3 make for loop ( reponse, reponse.blob)
         for (let filename of filenames) {
           const response = await fetch(filename);
           const blob = await response.blob();
+ // step 4 create element img with js 
           const img = document.createElement('img');
+// step 5 attach img to src = url.create          
           img.src = URL.createObjectURL(blob);
+// step 6 attach img to width
           img.width = '200';
+// step7 append element img to document.body
           document.body.append(img);
         }
       }
